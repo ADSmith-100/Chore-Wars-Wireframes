@@ -1,0 +1,88 @@
+<head>
+      <title>Chore Wars</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css">
+      <link rel="stylesheet" type="text/css" href="add-chores-page.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <nav role="navigation">Nav</nav>
+    <main role="main">
+      <header>
+        <h1>New Chore List</h1>
+      </header>
+      <section>
+           <script>
+
+        function addMoreMembers(i) {
+
+            $("#plusMember").remove();
+
+            $('#add-member').append('<div><input type="text" id="addMember' + i + '" name="household-name" placeholder="Larry" value="">' +
+            '<input type="button" onclick="removeThisMember(' + i + ');" class="memberButtonMinus" name="minus" id="minusMember' + i + '" value="-" style="font-size:21px; line-height:12px; border-radius:4px; margin:3px; margin-bottom:6px;"></div>' +
+            '<div> <input type="button" class="memberButtonAdd" name="plus" id="plusMember" value="+" style="font-size:21px; line-height:12px; border-radius:4px; margin:3px; margin-bottom:6px;" onclick="addMoreMembers(' + (i++) + ');"></div>');
+        }
+
+        function removeThisMember(j) {
+            $("#addMember" + j).remove();
+            $("#minusMember" + j).remove();
+            
+
+            
+        }
+
+         function addMoreChores(i) {
+
+            $("#plusChore").remove();
+
+            $('#add-chore').append('<div><input type="text" id="addChore' + i + '" name="chore-title" placeholder="Vacuum" value="">' +
+            '<input type="button" onclick="removeThisChore(' + i + ');" class="choreButtonMinus" name="minus" id="minusChore' + i + '" value="-" style="font-size:21px; line-height:12px; border-radius:4px; margin:3px; margin-bottom:6px;"><span id="dailyBox"><input type="checkbox" name="isDaily" id="isDaily'+ i + '" >Daily Chore?</input></span></div>' +
+            '<div> <input type="button" class="choreButtonAdd" name="plus" id="plusChore" value="+" style="font-size:21px; line-height:12px; border-radius:4px; margin:3px; margin-bottom:6px;" onclick="addMoreChores(' + (i++) + ');"></div>');
+        }
+
+        function removeThisChore(j) {
+            $("#addChore" + j).remove();
+            $("#minusChore" + j).remove();
+            // $("#isDaily" + j).remove();
+            $("#dailyBox").remove();
+
+            
+        }
+    </script>
+        <form id="chore-list">
+          <div class="form-section">
+            <label for="household-name">Household Name</label>
+            <input type="text" name="household-name" placeholder="The Smith's" required>
+          </div>
+          <div class="form-section">
+            <label for="chore-week-begins">Chore Week Begins</label>
+            <input type="date" placeholder="yyyy-mm-dd" required/>
+          </div>
+          <div class="form-section">
+            <label for="chore-week-ends">Chore Week Ends</label>
+            <input type="date" placeholder="yyyy-mm-dd" required/>
+          </div>
+          <div class="member-name" class="form-section" id="add-member">
+            <label for="member-name">Add Household Member</label>
+            <input id ="first-member" type="text" name="member-name" placeholder="Larry">
+            <input type="button" class="memberButtonAdd" name="plus" id="plusMember" value="+" style="font-size:21px; line-height:12px; border-radius:4px; margin:3px; margin-bottom:6px;" onclick="addMoreMembers(1);">
+          </div>
+          <div class="chore-title" class="form-section" id="add-chore">
+            <label for="chore-title">Add New Chore</label>
+            <input id ="first-chore" type="text" name="chore-title" placeholder="Dinner Dishes">
+            <input type="button" class="choreButtonAdd" name="plus" id="plusChore" value="+" style="font-size:21px; line-height:12px; border-radius:4px; margin:3px; margin-bottom:6px;" onclick="addMoreChores(1);">
+            <input type="checkbox" name="isDaily" id="isDaily" title="Daily Chore?">Daily Chore?</input>
+          </div>
+          
+
+          
+
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </form>
+      </section>
+    </main>
+  </body>
+
+</html>
